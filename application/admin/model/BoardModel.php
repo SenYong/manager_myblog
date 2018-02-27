@@ -15,9 +15,30 @@ class BoardModel extends Model{
     protected $table = 'fh_board';
 
     /*
-     * 获取发布的留言数据
+     * 获取留言数量
      */
     public function boardNum(){
         return $this->count();
     }
+
+    /*
+     * 获取日志评论列表
+     */
+    public function getBoardComment(){
+        return $this->order('b_id desc')->select();
+    }
+
+    /*
+    * 获取单个留言内容
+    */
+   public function getOneBoardComment($id){
+       return $this->where('b_id',$id)->find();
+   }
+
+   /*
+    * 留言板回复
+    */
+   public function replyBoards($data){
+      return $this->update($data);
+   }
 }

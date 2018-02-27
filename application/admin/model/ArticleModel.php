@@ -67,7 +67,6 @@ class ArticleModel extends Model{
      * 获取单个文章评论
      */
     public function getOneArtComment($id){
-        return $this->join('fh_article_c', $this->table . '.a_id=' . 'fh_article_c.ac_pid')->order('ac_id desc')->select();
+        return $this->join('fh_article_c', $this->table . '.a_id=' . 'fh_article_c.ac_pid')->where('ac_id',$id)->find();
     }
-
 }

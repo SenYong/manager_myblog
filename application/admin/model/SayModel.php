@@ -31,8 +31,8 @@
       /*
        * 获取所有说说
        */
-      public function selectSay(){
-         return $this->order('s_id desc')->select();
+      public function selectSay($num,$page){
+         return $this->order('s_id desc')->limit($num,$page)->select();
       }
 
       /*
@@ -54,5 +54,19 @@
      */
     public function delSay($id){
        return $this->where('s_id', $id)->delete();
+    }
+
+    /*
+     * 获取说说评论列表
+     */
+    public function getArtComment(){
+       return $this->join('fh_say_c', $this->table . '.s_id=' . 'fh_say_c.sc_pid')->order('s_id desc')->select();
+    }
+
+    /*
+     * 获取单个文章评论
+     */
+    public function getOneArtComment($id){
+        return $this->join('fh_say_c', $this->table . '.s_id=' . 'fh_say_c.sc_pid')->where('sc_id',$id)->find();
     }
   }

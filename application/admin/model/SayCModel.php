@@ -17,4 +17,11 @@
      public function saycNum(){
          return $this->where("id","")->count();
      }
+
+     /*
+      * 说说回复
+      */
+     public function replySays($data){
+        return $this->update($data);
+     }
  }

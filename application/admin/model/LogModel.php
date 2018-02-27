@@ -55,4 +55,18 @@ class LogModel extends Model{
     public function delLog($id){
         return $this->where('l_id',$id)->delete();
     }
+
+    /*
+     * 获取日志评论列表
+     */
+    public function getLogComment(){
+        return $this->join('fh_log_c', $this->table . '.l_id=' . 'fh_log_c.lc_pid')->order('l_id desc')->select();
+    }
+
+     /*
+     * 获取单个日志评论
+     */
+    public function getOneLogComment($id){
+        return $this->join('fh_log_c', $this->table . '.l_id=' . 'fh_log_c.lc_pid')->where('lc_id',$id)->find();
+    }
 }

@@ -7,6 +7,7 @@
  */
  namespace app\admin\controller;
  use app\admin\model\LogModel;
+  use app\admin\model\LogCModel;
  use think\Controller;
 
  class Log extends Controller
@@ -121,7 +122,58 @@
         return ['errcode'=>1, 'msg'=>'提交方式不正确'];
       }
     }
+     
+    /*
+     * 获取日志评论列表
+     */
+    public function getLogComment(){
+      if(request()->isPost()){
+        $logc = new LogModel();
+        $data = $logc->getLogComment();
+        if($data != null){
+          return ['errcode'=>0, 'msg'=>'获取成功', 'data'=>$data];
+        }else{
+          return ['errcode'=>2, "msg"=>"获取失败"];
+        }
+      }else{
+        return ['errcode'=>1, 'msg'=>'提交方式不正确'];
+      }
+    }
 
+    /*
+      * 获取单个用户评论
+      */
+     public function getOneLogComment(){
+        if(request()->isPost()){
+           $id = input('param.id');
+           $logc = new LogModel();
+           $data = $logc->getOneLogComment($id);
+           if($data){
+              return ['errcode'=>0, "msg"=>"获取成功", 'data'=>$data];
+           }else{
+              return ['errcode'=>2, "msg"=>"获取失败"];
+           }
+        }else{
+           return ['errcode'=>1, "msg"=>"提交方式不正确"];
+        }
+     }
+
+     /*
+      * 日志回复
+      */
+     public function replyLog(){
+        if(request()->isPost()){
+            $data = input('param.');
+            $logc = new LogCModel();
+            if($logc->replyLogs($data)){
+                return ['errcode'=>0, 'msg'=>'回复成功'];
+            }else{
+                return ['errcode'=>2, 'msg'=>'回复失败'];
+            }
+        }else{
+            return ['errcode'=>1, 'msg'=>'提交方式不正确'];
+        }
+     }
  }
 ?>
 

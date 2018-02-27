@@ -95,9 +95,9 @@
            $data['a_system'] = 'Win 7';
            $art = new ArticleModel();
            if($art->updateArt($data)){
-              return ['errcode'=>0, "msg"=>"新增成功"]; 
+              return ['errcode'=>0, "msg"=>"修改成功"]; 
            }else{
-              return ['errcode'=>2, "msg"=>"新增失败"]; 
+              return ['errcode'=>2, "msg"=>"修改失败"]; 
            }  
         }else{
           return ['errcode'=>1, "msg"=>"提交方式不正确"];
@@ -126,7 +126,7 @@
      
      /* 评论区 */
      /*
-      * 获取评论列表
+      * 获取文章评论列表
       */
      public function getArtComment(){
        if(request()->isPost()){
@@ -143,7 +143,7 @@
      }
      
      /*
-      * 获取评论列表
+      * 获取单个用户评论
       */
      public function getOneArtComment(){
         if(request()->isPost()){
@@ -159,6 +159,22 @@
            return ['errcode'=>1, "msg"=>"提交方式不正确"];
         }
      }
+     
+     /*
+      * 回复评论
+      */
+     public function replyArt(){
+       if(request()->isPost()){
+          $data = input('param.');
+          $artc = new ArticleCModel();
+          if($artc->replyArts($data))
+          return ['errcode'=>0, "msg"=>"回复成功", 'data'=>$data];
+          
+       }else{
+          return ['errcode'=>1, "msg"=>"提价方式不正确"];
+       }
+     }
+     
  }
 
 // 参考案例: https://www.jianshu.com/p/c4e1c8475a60

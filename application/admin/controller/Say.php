@@ -7,6 +7,7 @@
  */
  namespace app\admin\controller;
  use app\admin\model\SayModel;
+ use app\admin\model\SayCModel;
  use think\Request;
  use think\Controller;
 
@@ -58,8 +59,13 @@
     public function selectSay(){
         if(request()->isPost()){
            $say = new SayModel();
-           $data = $say->selectSay();
-           return ['errcode'=>0, 'data'=>$data];
+           $data = $say->selectSay(input('param.num'),input('param.page'));
+           $total = $say->sayNum();
+           if(is_array($data)){
+              return ['errcode'=>0, 'msg'=>'查询成功', 'data'=>$data, 'total'=>$total];
+           }else{
+              return ['errcode'=>2, 'msg'=>'查询失败'];
+           } 
         }else{
            return ['errcode'=>1, "msg"=>"提交方式不正确"];
         }
@@ -115,6 +121,59 @@
       }else{
         return ['errcode'=>1, "msg"=>'提交方式不正确'];
       }
+    }
+
+    /**评论区**/
+    /*
+     * 获取说说评论列表
+     */
+    public function getSayComment(){
+      if(request()->isPost()){
+        $sayc = new SayModel();
+        $data = $sayc->getArtComment();
+        if($data){
+          return ['errcode'=>0, "msg"=>"获取成功", 'data'=>$data];
+        }else{
+          return ['errcode'=>2, "msg"=>"获取失败"];
+        }
+      }else{
+        return ['errcode'=>1, 'msg'=>'提交方式不正确'];
+      }
+    }
+
+    /*
+     * 获取单个用户评论
+     */
+    public function getOneSayComment(){
+      if(request()->isPost()){
+        $id = input('param.id');
+        $sayc = new SayModel();
+        $data = $sayc->getOneArtComment($id);
+        if($data){
+          return ['errcode'=>0, "msg"=>"获取成功", 'data'=>$data];
+        }else{
+          return ['errcode'=>2, "msg"=>"获取失败"];
+        }
+      }else{
+        return ['errcode'=>1, "msg"=>"提交方式不正确"];
+      }
+    }
+
+    /*
+     * 说说回复
+     */
+    public function replySay(){
+        if(request()->isPost()){
+            $data = input('param.');
+            $sayc = new SayCModel();
+            if($sayc->replySays($data)){
+              return ['errcode'=>0, 'msg'=>'回复成功'];
+            }else{
+              return ['errcode'=>2, 'msg'=>'回复失败'];
+            }
+        }else{
+            return ['errcode'=>1, 'msg'=>"提交方式不正确"];
+        }
     }
  }
 ?>

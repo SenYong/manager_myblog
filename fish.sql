@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-02-09 17:54:00
+-- Generation Time: 2018-02-27 18:21:56
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.6.32
 
@@ -63,8 +63,8 @@ CREATE TABLE `fh_article` (
   `a_desc` varchar(256) NOT NULL COMMENT '描述',
   `a_keyword` varchar(64) NOT NULL COMMENT '标签',
   `a_img` varchar(128) NOT NULL COMMENT '图片',
-  `a_show` int(11) NOT NULL COMMENT '公开度:0是1不是',
-  `a_original` int(11) NOT NULL COMMENT '原创:0是1不是',
+  `a_show` int(11) NOT NULL COMMENT '公开度:1是0不是',
+  `a_original` int(11) NOT NULL COMMENT '原创:1是0不是',
   `a_time` int(11) NOT NULL COMMENT '发布时间',
   `a_root` varchar(64) NOT NULL COMMENT '发表人',
   `a_hit` int(11) DEFAULT '0' COMMENT '点击量',
@@ -121,13 +121,13 @@ CREATE TABLE `fh_article_c` (
 --
 
 INSERT INTO `fh_article_c` (`ac_id`, `ac_pid`, `ac_name`, `ac_img`, `ac_content`, `ac_time`, `ac_system`, `ac_ip`, `ac_rename`, `ac_reimg`, `ac_recontent`, `ac_retime`) VALUES
-(1, 9, '游客', '/Uploads/comment/1509682051.png', '其实我也是个假的程序员[mr:/2]', 1509682051, 'Win 7', '127.0.0.1', 'admin', '/Uploads/comment/1509689535.png', '其实我也是[em_11]', 1509689535),
-(2, 8, '游客', '/Uploads/comment/1509694759.png', '博主好厉害[em_2]', 1509694759, 'Win 7', '127.0.0.1', 'admin', '/Uploads/comment/1510044814.png', '谢谢夸奖，你也可以的[em_11]', 1510044814),
-(3, 8, '游客', '/Uploads/comment/1511253682.png', '文笔非常好[em_63]', 1511253682, 'Win 7', '127.0.0.1', NULL, NULL, NULL, NULL),
-(4, 18, '游客', '/Uploads/comment/1511505640.png', '按着博主的步骤终于搭建成功了，谢谢[em_13]', 1511505640, 'Win 7', '127.0.0.1', NULL, NULL, NULL, NULL),
-(5, 11, '游客', '/Uploads/comment/1512355242.png', '我又来了', 1512355242, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL),
-(6, 11, '游客', '/Uploads/comment/1512355245.png', '我又来了', 1512355245, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL),
-(7, 16, '游客', '/Uploads/comment/1512370251.png', '刚刚看了，对面试非常有用', 1512370251, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL);
+(1, 9, '游客', '/public/static/default/default.png', '其实我也是个假的程序员[mr:/2]', 1509682051, 'Win 7', '127.0.0.1', 'admin', '/Uploads/comment/1509689535.png', '其实我也是[em_11]', 1509689535),
+(2, 8, '游客', '/public/static/default/default.png', '博主好厉害[em_2]', 1509694759, 'Win 7', '127.0.0.1', 'admin', '/Uploads/comment/1510044814.png', '谢谢夸奖，你也可以的[em_11]', 1510044814),
+(3, 8, '游客', '/public/static/default/default.png', '文笔非常好[em_63]', 1511253682, 'Win 7', '127.0.0.1', 'admin', '/public/static/userImg/3c394791072f51289f24233ba42ee2e6.jpg', '谢谢:blush:', 1519712068),
+(4, 18, '游客', '/public/static/default/default.png', '按着博主的步骤终于搭建成功了，谢谢[em_13]', 1511505640, 'Win 7', '127.0.0.1', NULL, NULL, NULL, NULL),
+(5, 11, '游客', '/public/static/default/default.png', '我又来了', 1512355242, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL),
+(6, 11, '游客', '/public/static/default/default.png', '我又来了', 1512355245, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL),
+(7, 16, '游客', '/public/static/default/default.png', '刚刚看了，对面试非常有用', 1512370251, 'iPhone', '127.0.0.1', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ INSERT INTO `fh_board` (`b_id`, `b_name`, `b_img`, `b_content`, `b_time`, `b_ip`
 (1, '游客', '/Public/Home/img/default.png', '博主能教教我吗', 1510213126, '127.0.0.1', 'Win 7', 'admin', '/Public/Home/img/default.png', 1510215485, '好的[em_13]'),
 (2, '游客', '/Public/Home/img/default.png', '你好啊,博主[em_13]', 1511163870, '127.0.0.1', 'Win 7', 'admin', '/Public/Home/img/default.png', 1513910002, '你好[mr:/11]'),
 (3, '游客', '/Public/Home/img/default.png', '不错不错,可以借鉴一下', 1512123851, '127.0.0.1', 'iPhone', NULL, NULL, NULL, NULL),
-(4, '游客', '/Public/Home/img/default.png', '你好啊', 1512370332, '127.0.0.1', 'iPhone', 'admin', '/Public/Home/img/default.png', 1513913199, '你好[mr:/11]');
+(4, '游客', '/Public/Home/img/default.png', '你好啊', 1512370332, '127.0.0.1', 'iPhone', 'admin', '/public/static/userImg/3c394791072f51289f24233ba42ee2e6.jpg', 1513913199, '你好:smirk:');
 
 -- --------------------------------------------------------
 
@@ -200,14 +200,14 @@ CREATE TABLE `fh_log` (
   `l_img` varchar(128) NOT NULL COMMENT '标题图片',
   `l_desc` text NOT NULL COMMENT '描述',
   `l_content` text NOT NULL COMMENT '内容',
-  `l_show` int(11) NOT NULL COMMENT '公开度:0为显示1为不显',
+  `l_show` int(11) NOT NULL COMMENT '公开度:1为显示0为不显',
   `l_time` int(11) NOT NULL COMMENT '发布时间',
   `l_system` varchar(32) NOT NULL COMMENT '系统',
   `l_ip` varchar(16) NOT NULL COMMENT 'ip地址',
   `l_root` varchar(64) NOT NULL COMMENT '发布人',
   `l_hit` int(11) NOT NULL DEFAULT '0' COMMENT '点击量',
   `l_num` int(11) NOT NULL DEFAULT '0' COMMENT '评论数',
-  `l_original` int(11) NOT NULL COMMENT '是否原创:0是1不是'
+  `l_original` int(11) NOT NULL COMMENT '是否原创:1是0不是'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -246,7 +246,7 @@ CREATE TABLE `fh_log_c` (
 --
 
 INSERT INTO `fh_log_c` (`lc_id`, `lc_pid`, `lc_name`, `lc_img`, `lc_content`, `lc_time`, `lc_system`, `lc_ip`, `lc_rename`, `lc_reimg`, `lc_recontent`, `lc_retime`) VALUES
-(1, 1, '游客', '/Public/Home/img/default.png', '文章写的非常好', 1510044655, 'Android', '192.168.1.112', 'admin', '/Uploads/comment/1510048590.png', '谢谢[em_11]', 1510048590),
+(1, 1, '游客', '/Public/Home/img/default.png', '文章写的非常好', 1510044655, 'Android', '192.168.1.112', 'admin', '/public/static/userImg/3c394791072f51289f24233ba42ee2e6.jpg', '谢谢:gift_heart:', 1510048590),
 (2, 3, '游客', '/Public/Home/img/default.png', '说的好', 1512369867, 'iPhone', '192.168.1.112', NULL, NULL, NULL, NULL),
 (3, 3, '游客', '/Public/Home/img/default.png', '你好啊', 1512370287, 'iPhone', '61.140.24.76', NULL, NULL, NULL, NULL),
 (4, 3, '游客', '/Public/Home/img/default.png', '文章写的很好', 1512371573, 'iPhone', '61.140.24.76', NULL, NULL, NULL, NULL);
@@ -288,7 +288,7 @@ CREATE TABLE `fh_say` (
   `s_id` int(11) NOT NULL COMMENT '主键',
   `s_content` text NOT NULL COMMENT '说说内容',
   `s_img` varchar(256) DEFAULT NULL COMMENT '说说图片',
-  `s_show` int(11) NOT NULL COMMENT '公开度:0是1不是',
+  `s_show` int(11) NOT NULL COMMENT '公开度:1是0不是',
   `s_time` int(11) NOT NULL COMMENT '发布时间',
   `s_system` varchar(32) NOT NULL COMMENT '系统',
   `s_root` varchar(64) NOT NULL COMMENT '发布人',
@@ -307,7 +307,12 @@ INSERT INTO `fh_say` (`s_id`, `s_content`, `s_img`, `s_show`, `s_time`, `s_syste
 (6, '坚持一个星期更新一篇文章', '/public/static/sayImg/dc309034fe9523ce2994485aa63a3db6.jpg', 1, 1511842273, 'Win 7', 'admin', '127.0.0.1', 9, 0),
 (10, '今天天气好冷啊', '/public/static/sayImg/8270b77bfdb9c8dc7e2e1eab438eea34.jpg', 1, 1517905828, 'Win 7', 'admin', '127.0.0.1', 0, 0),
 (11, '今天天气很好，公司氛围很压抑', '/public/static/sayImg/133272d8820f7a56395796ac4470e03a.jpg', 1, 1517907153, 'Win 7', 'xiaoxiao', '127.0.0.1', 0, 0),
-(12, 'ss', '/public/static/sayImg/d22ed9814944d8bde0f5c16b04ca5cd6.jpg', 1, 1517907245, 'Win 7', 'xiaoxiao', '127.0.0.1', 0, 0);
+(12, 'ssda', '/public/static/sayImg/d22ed9814944d8bde0f5c16b04ca5cd6.jpg', 1, 1517907245, 'Win 7', 'admin', '127.0.0.1', 0, 0),
+(13, '漂亮吧:smirk:', '/public/static/sayImg/f3df69280f81af859dc5feafd591f3ba.jpg', 1, 1519721658, 'Win 7', 'admin', '127.0.0.1', 0, 0),
+(14, '上班的乐趣之一:blush:', '/public/static/sayImg/d541fc6bf0169e0c3a172985dac95932.jpg', 1, 1519722001, 'Win 7', 'admin', '127.0.0.1', 0, 0),
+(15, '生日快乐你今晚又多个名字叫黑猪噢:gift:', '/public/static/sayImg/2def5e608d37b163a9e88bffd486dd26.jpg', 1, 1519722243, 'Win 7', 'admin', '127.0.0.1', 0, 0),
+(16, '做自己喜欢的事，追求最适合自己的东西，就是追求的意义', '/public/static/sayImg/0cb6c2ee67dd1145f03c39fc56bf1a39.jpg', 1, 1519722517, 'Win 7', 'admin', '127.0.0.1', 0, 0),
+(17, '开工大吉', '/public/static/sayImg/fd5bbf2377e821ca5b4682fd102c1b10.jpg', 1, 1519723569, 'Win 7', 'admin', '127.0.0.1', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -335,16 +340,16 @@ CREATE TABLE `fh_say_c` (
 --
 
 INSERT INTO `fh_say_c` (`sc_id`, `sc_pid`, `sc_name`, `sc_img`, `sc_content`, `sc_ip`, `sc_system`, `sc_time`, `sc_rename`, `sc_reimg`, `sc_recontent`, `sc_retime`) VALUES
-(1, 4, '游客', '/Uploads/comment/1509594712.png', '公仔好漂亮啊[em_2][em_2]', '127.0.0.1', 'Unknown', 1509594712, NULL, NULL, NULL, NULL),
-(2, 4, '游客', '/Uploads/comment/1509594804.png', '公仔哪里买的呀[mr:/18]', '127.0.0.1', 'Unknown', 1509594804, NULL, NULL, NULL, NULL),
-(3, 4, '游客', '/Uploads/comment/1509594865.png', '小兔兔好漂亮[em_5]', '127.0.0.1', 'Win 7', 1509594865, NULL, NULL, NULL, NULL),
-(4, 4, '游客', '/Uploads/comment/1509604590.png', '抓到的公仔好漂亮[em_2]', '127.0.0.1', 'Win 7', 1509604590, 'admin', '/Uploads/comment/1509613213.png', '[em_10]', 1509613213),
-(6, 4, '游客', '/Uploads/comment/1509614023.png', '你想说什么[em_10]', '127.0.0.1', 'Unknown', 1509614023, NULL, NULL, NULL, NULL),
-(7, 4, '游客', '/Uploads/comment/1509614106.png', 'hello,小明[em_33]', '127.0.0.1', 'Unknown', 1509614106, 'admin', '/Uploads/comment/1511516685.png', '', 1511516685),
-(8, 4, '游客', '/Uploads/comment/1509681577.png', '红色的小兔公仔[em_2]', '127.0.0.1', 'Win 7', 1509681577, NULL, NULL, NULL, NULL),
-(9, 4, '游客', '/Uploads/comment/1511251859.png', '是呀，广州这两天降温', '127.0.0.1', 'Win 7', 1511251859, 'admin', '/Uploads/comment/1511516730.png', '要多穿点衣服哦[mr:/2]', 1511516730),
-(10, 4, '游客', '/Uploads/comment/1511251945.png', '是呀，广州这两天降温', '127.0.0.1', 'Win 7', 1511251945, 'admin', '/Uploads/comment/1513910246.png', '多穿点衣服[mr:/2]', 1513910246),
-(11, 6, '游客', '/Uploads/comment/1513910488.png', '楼主加油[em_28]', '127.0.0.1', 'Win 7', 1513910488, 'admin', '/Uploads/comment/1513910532.png', '好的[mr:/35]', 1513910532);
+(1, 4, '游客', '/public/static/default/default.png', '公仔好漂亮啊[em_2][em_2]', '127.0.0.1', 'Unknown', 1509594712, NULL, NULL, NULL, NULL),
+(2, 4, '游客', '/public/static/default/default.png', '公仔哪里买的呀[mr:/18]', '127.0.0.1', 'Unknown', 1509594804, NULL, NULL, NULL, NULL),
+(3, 4, '游客', '/public/static/default/default.png', '小兔兔好漂亮[em_5]', '127.0.0.1', 'Win 7', 1509594865, NULL, NULL, NULL, NULL),
+(4, 4, '游客', '/public/static/default/default.png', '抓到的公仔好漂亮[em_2]', '127.0.0.1', 'Win 7', 1509604590, 'admin', '/Uploads/comment/1509613213.png', '[em_10]', 1509613213),
+(6, 4, '游客', '/public/static/default/default.png', '你想说什么[em_10]', '127.0.0.1', 'Unknown', 1509614023, NULL, NULL, NULL, NULL),
+(7, 4, '游客', '/public/static/default/default.png', 'hello,小明[em_33]', '127.0.0.1', 'Unknown', 1509614106, 'admin', '/Uploads/comment/1511516685.png', '', 1511516685),
+(8, 4, '游客', '/public/static/default/default.png', '红色的小兔公仔[em_2]', '127.0.0.1', 'Win 7', 1509681577, NULL, NULL, NULL, NULL),
+(9, 4, '游客', '/public/static/default/default.png', '是呀，广州这两天降温', '127.0.0.1', 'Win 7', 1511251859, 'admin', '/Uploads/comment/1511516730.png', '要多穿点衣服哦[mr:/2]', 1511516730),
+(10, 4, '游客', '/public/static/default/default.png', '是呀，广州这两天降温', '127.0.0.1', 'Win 7', 1511251945, 'admin', '/Uploads/comment/1513910246.png', '多穿点衣服[mr:/2]', 1513910246),
+(11, 6, '游客', '/public/static/default/default.png', '楼主加油[em_28]', '127.0.0.1', 'Win 7', 1513910488, 'admin', '/public/static/userImg/3c394791072f51289f24233ba42ee2e6.jpg', '好的:blush:', 1513910532);
 
 -- --------------------------------------------------------
 
@@ -545,7 +550,7 @@ ALTER TABLE `fh_picture`
 -- 使用表AUTO_INCREMENT `fh_say`
 --
 ALTER TABLE `fh_say`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=13;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=18;
 
 --
 -- 使用表AUTO_INCREMENT `fh_say_c`

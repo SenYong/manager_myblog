@@ -37,7 +37,6 @@
      public function addArticle(){
        if(request()->isPost()){
          $data = input('param.');
-         $data['a_content'] = 'hello world';
          $data['a_ip'] = request()->ip();
          $data['a_system'] = 'Win 7';
          $art = new ArticleModel();
@@ -90,7 +89,6 @@
      public function updateArticle(){
         if(request()->isPost()){
            $data = input('param.');
-           $data['a_content'] = 'hello world';
            $data['a_ip'] = request()->ip();
            $data['a_system'] = 'Win 7';
            $art = new ArticleModel();
@@ -173,6 +171,12 @@
        }else{
           return ['errcode'=>1, "msg"=>"提价方式不正确"];
        }
+     }
+     
+     //内容编辑图片上传
+     public function editor(){
+        $file = input("post.img");
+        return ['errcode'=>0, 'file'=>$file];
      }
      
  }

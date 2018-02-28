@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-02-27 18:21:56
+-- Generation Time: 2018-02-28 18:37:09
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.6.32
 
@@ -92,8 +92,9 @@ INSERT INTO `fh_article` (`a_id`, `pid`, `a_content`, `a_desc`, `a_keyword`, `a_
 (33, 1, 'hello world', '大萨达', 'das', '/public/static/artImg/2cd45b6b6a0584134ffd640468d64607.png', 1, 1, 1517306834, 'admin', 0, 'Win 7', '127.0.0.1', 0, '你好'),
 (34, 1, 'hello world', '小菜一碟', '小菜', '/public/static/artImg/5dcb2b2a74c2219eb2ff23de96314e8c.png', 1, 1, 1517308425, 'admin', 0, 'Win 7', '127.0.0.1', 0, '小菜一碟'),
 (35, 1, 'hello world', '今天天气好冷', '好冷', '/public/static/artImg/23763c41568fcbb4f540f9094d702d00.png', 1, 1, 1517366147, 'admin', 0, 'Win 7', '127.0.0.1', 0, '2018/01/31'),
-(41, 1, 'hello world', '新增或者更新', '测试', '/public/static/artImg/a4e8d0a75033e366ecd43f128ca9032c.png', 1, 1, 1517370913, 'admin', 0, 'Win 7', '127.0.0.1', 0, '测试新增还是更新啦啦啦'),
-(42, 1, 'hello world', '发布文章', '文章', '/public/static/artImg/b565822298fbd529e755ba1ef5b53d8e.png', 1, 1, 1517372171, 'admin', 0, 'Win 7', '127.0.0.1', 0, '我再来发布一条文章');
+(41, 1, '<p>测试新增还是更新啦啦啦</p>', '新增或者更新', '测试', '/public/static/artImg/a4e8d0a75033e366ecd43f128ca9032c.png', 1, 1, 1517370913, 'admin', 0, 'Win 7', '127.0.0.1', 0, '测试新增还是更新啦啦啦'),
+(42, 1, '<p>我再来发布一条文章</p>', '发布文章', '文章', '/public/static/artImg/b565822298fbd529e755ba1ef5b53d8e.png', 1, 1, 1517372171, 'admin', 0, 'Win 7', '127.0.0.1', 0, '我再来发布一条文章'),
+(43, 3, '<p>博客终于完成了,功能等待完善</p>', '历时两个多月', '博客', '/public/static/artImg/1b1afa28ac1a010d6e06859a0e4d5478.png', 1, 1, 1519785569, 'admin', 0, 'Win 7', '127.0.0.1', 0, '博客终于完成了');
 
 -- --------------------------------------------------------
 
@@ -508,7 +509,7 @@ ALTER TABLE `fh_album`
 -- 使用表AUTO_INCREMENT `fh_article`
 --
 ALTER TABLE `fh_article`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=43;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', AUTO_INCREMENT=44;
 
 --
 -- 使用表AUTO_INCREMENT `fh_article_c`
